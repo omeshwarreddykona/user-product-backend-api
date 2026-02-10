@@ -3,7 +3,7 @@
 [![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](https://expressjs.com)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](https://www.mongodb.com)
 [![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
-[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#-project-status)
+[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#project-status)
 
 # 🚀 User–Product Backend API (JWT Authentication)
 
