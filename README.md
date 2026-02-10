@@ -1,13 +1,14 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node.js-Backend-success)](https://nodejs.org)
-[![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](https://expressjs.com)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](https://www.mongodb.com)
-[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
+[![Node.js](https://img.shields.io/badge/Node.js-Backend-success)](#)
+[![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](#)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](#)
+[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](#)
 [![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#project-status)
 
 # 🚀 User–Product Backend API (JWT Authentication)
 
-A **secure, production-ready RESTful Backend API** built using **Node.js, Express.js, and MongoDB**.  
+A **secure, production-ready RESTful Backend API** built using **Node.js, Express.js, and MongoDB**.
+
 It implements **JWT authentication**, **role-based access (Admin/User)**, **product management**, **pagination**, **search**, and **soft delete** patterns.
 
 This project follows **real-world backend engineering standards** and is suitable for scalable applications.
@@ -16,10 +17,11 @@ This project follows **real-world backend engineering standards** and is suitabl
 
 ## 💡 Why This Project?
 
-This project was built to demonstrate **practical backend development skills**, including:
+This project was built to demonstrate practical backend development skills:
+
 - Secure authentication & authorization
 - Clean API architecture
-- Database-driven pagination and search
+- Database-driven pagination & search
 - Enterprise-style soft delete strategy
 - Production-ready folder structure
 
@@ -54,14 +56,14 @@ This project was built to demonstrate **practical backend development skills**, 
 - MVC / Service-oriented architecture
 - Centralized error handling
 - MongoDB ObjectId validation
-- Clean, maintainable, and scalable codebase
+- Clean, maintainable, scalable codebase
 
 ---
 
 ## 🛠 Tech Stack
 
 | Technology | Usage |
-|-----------|------|
+|----------|------|
 | Node.js | Runtime |
 | Express.js | Backend framework |
 | MongoDB | Database |
@@ -75,7 +77,6 @@ This project was built to demonstrate **practical backend development skills**, 
 ## 📁 Project Structure
 
 user-product-backend-api/
-│
 ├── controllers/
 │ └── userProductController.js
 ├── models/
@@ -100,7 +101,7 @@ Copy code
 
 ## ⚙️ Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file:
 
 ```env
 PORT=5000
@@ -121,7 +122,7 @@ Copy code
 http://localhost:5000
 🔐 Authentication APIs
 Signup
-bash
+http
 Copy code
 POST /api/signup
 json
@@ -134,7 +135,7 @@ Copy code
   "admin_key": "optional"
 }
 Login
-bash
+http
 Copy code
 POST /api/login
 json
@@ -146,14 +147,14 @@ Copy code
 📦 Product APIs (Protected)
 Authorization Header
 
-makefile
+http
 Copy code
 Authorization: Bearer <JWT_TOKEN>
 Create Product → POST /api/products
 
 Get Products → GET /api/products?page=1&limit=5&search=mobile
 
-Get Product by ID → GET /api/products/:id
+Get Product → GET /api/products/:id
 
 Update Product → PUT /api/products/:id
 
@@ -195,13 +196,14 @@ File upload support
 
 Rate limiting & security headers
 
-## Project Status
+Project Status
+Status: ✅ Production Ready
 
-- Status: ✅ Production Ready
-- Deployment: Not deployed (API-ready)
-- Environment: Local / Cloud compatible
-- Version: v1.0.0
+Deployment: Not deployed (API-ready)
 
+Environment: Local / Cloud compatible
+
+Version: v1.0.0
 
 👨‍💻 Author
 Kona Omeshwar Reddy
