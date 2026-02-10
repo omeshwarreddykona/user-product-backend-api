@@ -3,7 +3,6 @@
 [![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](https://expressjs.com)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](https://www.mongodb.com)
 [![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
-[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](Project-Status)
 
 # 🚀 User–Product Backend API (JWT Authentication)
 
@@ -195,15 +194,6 @@ Swagger API documentation
 File upload support
 
 Rate limiting & security headers
-
-Project Status
-Status: ✅ Production Ready
-
-Deployment: Not deployed (API-ready)
-
-Environment: Local / Cloud compatible
-
-Version: v1.0.0
 
 👨‍💻 Author
 Kona Omeshwar Reddy
