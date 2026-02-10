@@ -1,9 +1,9 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node.js-Backend-success)](#)
-[![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](#)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](#)
-[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](#)
-[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#project-status)
+[![Node.js](https://img.shields.io/badge/Node.js-Backend-success)](https://nodejs.org)
+[![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](https://expressjs.com)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](https://www.mongodb.com)
+[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
+[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](Project-Status)
 
 # 🚀 User–Product Backend API (JWT Authentication)
 
