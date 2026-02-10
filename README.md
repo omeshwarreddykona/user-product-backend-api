@@ -5,7 +5,6 @@
 [![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
 [![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#-project-status)
 
-
 # 🚀 User–Product Backend API (JWT Authentication)
 
 A **secure, production-ready RESTful Backend API** built using **Node.js, Express.js, and MongoDB**.  
