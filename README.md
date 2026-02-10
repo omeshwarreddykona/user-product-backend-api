@@ -1,4 +1,4 @@
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Node.js](https://img.shields.io/badge/Node.js-Backend-success)
 ![Express.js](https://img.shields.io/badge/Express.js-Framework-black)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)
