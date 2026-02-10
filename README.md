@@ -1,9 +1,3 @@
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node.js-Backend-success)](https://nodejs.org)
-[![Express.js](https://img.shields.io/badge/Express.js-Framework-black)](https://expressjs.com)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)](https://www.mongodb.com)
-[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io)
-
 # 🚀 User–Product Backend API (JWT Authentication)
 
 A **secure, production-ready RESTful Backend API** built using **Node.js, Express.js, and MongoDB**.
