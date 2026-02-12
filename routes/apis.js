@@ -13,7 +13,7 @@ router.get("/get-product-id/:id",authController.getproductbyId);
 router.put("/update-product-id/:id",authController.UpdateProductbyId);
 router.delete("/delete-product-id/:id",authController.deleteProductId);
 router.put("/delete-update-product/:id",authController.deleteandUpdateProductId)
-router.get("/verify-token", verifyUser, (req,res) => {
+router.get("/verify-token", verifyUser(), (req,res) => {
     res.json({
         success: true,
         message: "Token validated successfully",
