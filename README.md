@@ -1,125 +1,132 @@
-# 🚀 User–Product Backend API (JWT Authentication)
+🚀 User–Product Backend API (JWT Authentication)
 
-A **secure, production-ready RESTful Backend API** built using **Node.js, Express.js, and MongoDB**.
+A secure RESTful Backend API built using Node.js, Express.js, and MongoDB.
 
-It implements **JWT authentication**, **role-based access (Admin/User)**, **product management**, **pagination**, **search**, and **soft delete** patterns.
+This project implements JWT authentication, role-based authorization (Admin/User), product management, pagination, search, and soft delete strategies following real-world backend standards.
 
-This project follows **real-world backend engineering standards** and is suitable for scalable applications.
+💡 Why This Project?
 
----
+This project demonstrates strong backend fundamentals:
 
-## 💡 Why This Project?
+Secure authentication & authorization
 
-This project was built to demonstrate practical backend development skills:
+Clean MVC-style architecture
 
-- Secure authentication & authorization
-- Clean API architecture
-- Database-driven pagination & search
-- Enterprise-style soft delete strategy
-- Production-ready folder structure
+MongoDB pagination & search
 
----
+Soft delete pattern for data safety
 
-## ✨ Key Features
+Scalable and maintainable backend design
 
-### 🔐 Authentication & Authorization
-- User signup with **bcrypt password hashing**
-- Login with **JWT access & refresh tokens**
-- Role-based access (**Admin / User**)
-- Environment security using **dotenv**
+✨ Key Features
+🔐 Authentication & Authorization
 
-### 👤 User Management
-- Email-based registration
-- Duplicate user prevention
-- Admin creation via `ADMIN_KEY`
+User registration with bcrypt password hashing
 
-### 📦 Product Management
-- Create product (authenticated users)
-- Fetch products with:
-  - Pagination
-  - Search by name & category
-- Get product by ID
-- Update product details
-- Hard delete product
-- Soft delete using `deleted_at`
+Login with JWT access & refresh tokens
 
----
+Role-based access (Admin / User)
 
-## ⚙️ Backend Best Practices
-- MVC / Service-oriented architecture
-- Centralized error handling
-- MongoDB ObjectId validation
-- Clean, maintainable, scalable codebase
+Token verification middleware
 
----
+Environment security using dotenv
 
-## 🛠 Tech Stack
+👤 User Management
 
-| Technology | Usage |
-|----------|------|
-| Node.js | Runtime |
-| Express.js | Backend framework |
-| MongoDB | Database |
-| Mongoose | ODM |
-| bcrypt | Password hashing |
-| JWT | Authentication |
-| dotenv | Environment variables |
+Email-based registration
 
----
+Duplicate email prevention
 
-## 📁 Project Structure
+Admin creation using ADMIN_KEY
 
+📦 Product Management
+
+Create product (Admin only)
+
+Fetch products with:
+
+Pagination
+
+Search (name & category)
+
+Get product by ID
+
+Update product details
+
+Hard delete product
+
+Soft delete using deleted_at
+
+⚙️ Backend Best Practices Used
+
+MVC-style folder structure
+
+Middleware-based authentication
+
+MongoDB ObjectId handling
+
+Environment-based configuration
+
+Clean, readable, maintainable code
+
+🛠 Tech Stack
+Technology	Purpose
+Node.js	Runtime
+Express.js	Backend framework
+MongoDB	Database
+Mongoose	ODM
+bcrypt	Password hashing
+JWT	Authentication
+dotenv	Environment variables
+📁 Project Structure
 user-product-backend-api/
+│
 ├── controllers/
-│ └── userProductController.js
+│   └── auth.js
+│
+├── database/
+│   └── db.js
+│
 ├── models/
-│ ├── user.js
-│ └── product.js
+│   ├── user.js
+│   └── product.js
+│
 ├── routes/
-│ └── routes.js
-├── middlewares/
-│ └── authMiddleware.js
-├── config/
-│ └── db.js
+│   └── apis.js
+│
+├── uilites/
+│   └── helper.js
+│
 ├── server.js
 ├── .env.example
 ├── package.json
 ├── README.md
 └── LICENSE
 
-yaml
-Copy code
+⚙️ Environment Variables
 
----
+Create a .env file in the root directory:
 
-## ⚙️ Environment Variables
-
-Create a `.env` file:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-SECRET=your_jwt_secret
+PORT=4003
+db_url=your_mongodb_connection_string
+secret=your_jwt_secret
 ADMIN_KEY=your_admin_key
+
 🚀 Installation & Run
-bash
-Copy code
-git clone https://github.com/your-username/user-product-backend-api.git
+git clone https://github.com/omeshwarreddykona/user-product-backend-api.git
 cd user-product-backend-api
 npm install
 npm start
+
+
 Server runs at:
 
-arduino
-Copy code
-http://localhost:5000
+http://localhost:4003
+
 🔐 Authentication APIs
-Signup
-http
-Copy code
-POST /api/signup
-json
-Copy code
+✅ Register User
+POST /api/register
+
 {
   "name": "Omeshwar",
   "email": "user@gmail.com",
@@ -127,69 +134,91 @@ Copy code
   "confirm_password": "123456",
   "admin_key": "optional"
 }
-Login
-http
-Copy code
+
+✅ Login User
 POST /api/login
-json
-Copy code
+
+
+Response:
+
 {
   "token": "jwt_access_token",
   "refreshToken": "jwt_refresh_token"
 }
-📦 Product APIs (Protected)
-Authorization Header
 
-http
-Copy code
+✅ Verify Token
+GET /api/verify-token
+
+
+Header:
+
 Authorization: Bearer <JWT_TOKEN>
-Create Product → POST /api/products
 
-Get Products → GET /api/products?page=1&limit=5&search=mobile
+📦 Product APIs (Protected Routes)
 
-Get Product → GET /api/products/:id
+Authorization Header (Required):
 
-Update Product → PUT /api/products/:id
+Authorization: Bearer <JWT_TOKEN>
 
-Hard Delete → DELETE /api/products/:id
+➕ Create Product (Admin only)
+POST /api/create-product
 
-Soft Delete → PATCH /api/products/soft-delete/:id
+📄 Get All Products (Pagination & Search)
+GET /api/get-all-product?page=1&limit=5&search=mobile
+
+🔍 Get Product by ID
+GET /api/get-product-id/:id
+
+✏️ Update Product
+PUT /api/update-product-id/:id
+
+❌ Hard Delete Product
+DELETE /api/delete-product-id/:id
+
+♻️ Soft Delete Product
+PUT /api/delete-update-product/:id
 
 🔐 Security Practices
-Password hashing with bcrypt
 
-JWT-based authentication
+Password hashing using bcrypt
 
-Role-based authorization
+JWT authentication & authorization
 
-Secrets stored in environment variables
+Role-based access control
 
-Protected routes via middleware
+Environment variable protection
+
+Middleware-protected routes
 
 ⚡ Performance Considerations
+
 Pagination using limit & skip
 
-Optimized MongoDB queries
+Indexed MongoDB queries
 
-Soft delete instead of data loss
+Soft delete to prevent data loss
 
 🧪 Testing
+
 Tested using Postman
 
 JWT required for protected routes
 
+Admin-only routes enforced
+
 🚀 Future Enhancements
-Refresh token persistence (DB / Redis)
 
-Admin-only middleware
+Store refresh tokens in DB / Redis
 
-Swagger API documentation
+Admin-only route middleware separation
 
-File upload support
+Swagger / OpenAPI documentation
+
+File uploads (images, PDFs)
 
 Rate limiting & security headers
 
 👨‍💻 Author
+
 Kona Omeshwar Reddy
 Backend Developer | Node.js | MongoDB | JWT
-
