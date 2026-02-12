@@ -19,6 +19,7 @@ Soft delete pattern for data safety
 Scalable and maintainable backend design
 
 ✨ Key Features
+
 🔐 Authentication & Authorization
 
 User registration with bcrypt password hashing
