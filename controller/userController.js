@@ -26,14 +26,19 @@ export default {
 
   getUsers(req, res, next) {
     services.getallUsers(req.query).then(result => {
-      res.set({
-        "totalCount": result.meta.totalCount,
-        "totalPages": result.meta.totalPages,
-        "currentPage": result.meta.currentPage,
-        "skip": result.meta.skip,
-        "limit": result.meta.limit
-      })
-      res.json({ success: true, message: "Fetched the data successfully", data: result.data })
+      if (result.length > 0) {
+                res.set(result[0].headers || {});
+                res.json(result[0].docs);
+            }
+            else {
+                res.set({
+                    "limit": request.query.limit ? request.query.limit : 1,
+                    "page": request.query.page ? request.query.page : 1,
+                    "total_count": 0,
+                    "total_pages": 0
+                });
+      res.json(result)
+              }
     }).catch(error => {
       next(error)
     })

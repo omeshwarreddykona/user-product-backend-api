@@ -164,35 +164,33 @@ export default {
           { email: { $regex: search, $options: "i" } }
         ];
       }
-      let result = await User.aggregate([{ $match: filter },
-      {
-        $facet: {
-          data: [
-            { $sort: { _id: -1 } },
-            { $skip: skip },
-            { $limit: limit }
-          ],
-          headerdata: [
-            { $count: "total_count" }
-          ]
+      let result = await User.aggregate([
+        { $match: filter },
+        { $group: { _id: null, docs: { $push: "$$ROOT" }, totalcount: { $sum: 1 } } },
+        { $unwind: '$docs' },
+        { $sort: { "docs._id": -1 } },
+        { $skip: skip },
+        { $limit: limit },
+        {
+          $group: {
+            _id: null,
+            docs: { $push: '$docs' },
+            headers: {
+              $first: {
+                total_count: '$totalcount',
+                total_pages: {
+                  $ceil: {
+                    $divide: ['$totalcount', limit]
+                  }
+                },
+                current_page: page,
+                limit: limit
+              }
+            }
+          }
         }
-      }
-      ]);
-
-      let totalCount = result[0].headerdata[0]?.total_count || 0;
-      let totalPages = Math.ceil(totalCount / limit);
-
-
-      return {
-        code: 200, message: "Fetched the User data Successfully", data: result[0].data,
-        meta: {
-          "totalCount": totalCount,
-          "totalPages": totalPages,
-          "currentPage": page,
-          "skip": skip,
-          "limit": limit
-        }
-      }
+      ]).exec();
+      return result;
     } catch (error) {
       throw { code: 500, message: error.message }
     }
