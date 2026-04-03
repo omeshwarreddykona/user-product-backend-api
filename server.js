@@ -12,7 +12,10 @@ const app = express();
 app.use(logger);
 const Port = process.env.PORT || 4003 ;
 
-app.use(cors());
+app.use(cors({
+  origin: "*", // you can replace with frontend URL
+  exposedHeaders: ["total_count", "total_pages", "current_page", "limit"]
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

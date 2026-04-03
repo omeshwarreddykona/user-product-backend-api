@@ -6,7 +6,7 @@ import { ObjectId } from "mongodb";
 import { config } from 'dotenv';
 config();
 
-const secret = process.env.secret;
+// const secret = process.env.secret;
 
 export default {
 
@@ -40,15 +40,15 @@ export default {
 
       let Phoneresult = phoneValidator.validatePhone(phoneNo, countryCode);
       if (!Phoneresult.isValid) {
-        throw { code : 400, message: "Invalid Number for the selcted country" }
+        return { code : 400, message: "Invalid Number for the selcted country" }
       };
       const existingUser = await Employee.findOne({ email: email })
       if (existingUser) {
-        throw { code : 400, message: "User already existed, Please change your email" }
+        return { code : 400, message: "User already existed, Please change your email" }
       }
       const existPhoneNumber = await Employee.findOne({ phoneNo: Phoneresult.formatedNumber });
       if (existPhoneNumber) {
-        throw { code : 400, message: "Phone Number exists,Please enter another number" }
+        return { code : 400, message: "Phone Number exists,Please enter another number" }
       }
       let data = {
         firstName: firstName,
