@@ -119,7 +119,7 @@ export default {
     try {
       let findProduct = await Product.findOne({ _id: new ObjectId(id) });
       if (!findProduct) {
-        throw { code : 400, message: "Product not found" }
+        return { code : 400, message: "Product not found" }
       }
       if (findProduct) {
         let update = await Product.updateOne({ _id: new ObjectId(id) }, { $set: updateProduct })
