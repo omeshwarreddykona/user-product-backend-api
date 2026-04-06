@@ -38,7 +38,7 @@ export default {
         }
         const existingProduct = await Product.findOne({ name: name });
         if (existingProduct) {
-          throw { code : 400, message: "The Product already exists" }
+          return { code : 400, message: "The Product already exists" }
         }
         let data = { name: name, category: category, price: price, isAvailable: isAvailable, created_by: created_by }
         let product = await Product.create(data);
@@ -113,16 +113,15 @@ export default {
   },
   // ================= update the product ===================// 
 
-  async UpdateProductbyId(body,params) {
+  async UpdateProductbyId(params, body) {
     const id = params.id;
-    let updateProduct = body;
     try {
       let findProduct = await Product.findOne({ _id: new ObjectId(id) });
       if (!findProduct) {
-        return { code : 400, message: "Product not found" }
+        return { code : 404, message: "Product not found" }
       }
       if (findProduct) {
-        let update = await Product.updateOne({ _id: new ObjectId(id) }, { $set: updateProduct })
+        let update = await Product.updateOne({ _id: new ObjectId(id) }, { $set: body })
         if (update) {
           return { code : 200, message: "Product updated successfully" };
         }

@@ -41,7 +41,7 @@ export default {
 
     updateById(req, res, next) {
         services.UpdateProductbyId(req.params, req.body).then(result => {
-            res.json(result )
+            res.json(result)
         }).catch(error => {
             next(error)
         })
@@ -49,7 +49,7 @@ export default {
 
     deletebyId(req, res, next) {
         services.deleteandUpdateProductId(req.params).then(result => {
-            res.json({ result })
+            res.json(result)
         }).catch(error => {
             next(error)
         })
