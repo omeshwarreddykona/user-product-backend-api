@@ -1,7 +1,7 @@
 import express from "express";
 // import morgan from "morgan";
 import logger from "./uilites/logger.js";
-import router from "./routes/apis.js";
+import router from "./routes/apis.js";  
 import connectDB from "./database/db.js";
 import cors from "cors";
 import { config } from 'dotenv';

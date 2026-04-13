@@ -102,7 +102,7 @@ export default {
       if (!comparePassword) {
         throw { code: 400, message: "Password was wrong,please try again" }
       }
-      let token = jwt.sign({ user_id: user._id, username: user.name, role: user.role, email: user.email }, secret, { expiresIn: "7d" });
+      let token = jwt.sign({ user_id: user._id, username: user.name, email: user.email }, secret, { expiresIn: "7d" });
       return { code: 200, message: "User login successfully", token }
     } catch (error) {
       throw error
@@ -516,7 +516,17 @@ export default {
       if (!file) {
         throw { code: 400, message: "Please provide the Image file" }
       }
-      const Imagepath = "./uploads/" + file.filename;
+      const fileSizeInBytes = file.size;
+      const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+      if (fileSizeInMegabytes > 5) {
+        return { code: 400, message: "File should not be graterthan 5MB" };
+      }
+      const allowedTypes = ["image/jpg", "image/png", "image/jpeg"];
+      if (!allowedTypes.includes(file.mimetype)) {
+        return { code: 400, message: "image/jpg,image/png,image/jpeg are only allowed" };
+      }
+      const Imagepath = "/uploads/" + file.filename;
+
       let findUser = await User.findOne({ _id: new ObjectId(userId) });
       if (!findUser) {
         throw { code: 404, message: "User not found" }
