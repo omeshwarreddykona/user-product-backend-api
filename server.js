@@ -11,6 +11,9 @@ config();
 
 const app = express();
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: true }));
+app.get("/", (req, res) => {
+  res.redirect("/api-docs");
+});
 // app.use(morgan("dev"));
 app.use(logger);
 const Port = process.env.PORT || 4000 ;
