@@ -17,7 +17,7 @@ export default {
 
   login(req, res, next) {
     services.loginUser(req.body).then(result => {
-      res.json(result)
+      res.status(result.code || 200).json(result)
     }).catch(error => {
       next(error)
     })

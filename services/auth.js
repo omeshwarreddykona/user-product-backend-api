@@ -3,14 +3,14 @@ import fs from "fs";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { ObjectId } from "mongodb";
-import { config } from 'dotenv';
 import validator from "validator";
 import PasswordValidator from "password-validator";
 import blacklist from "../uilites/blacklist.js";
+import { config } from 'dotenv';
 config();
 
 
-const secret = process.env.secret;
+
 
 
 
@@ -67,13 +67,13 @@ export default {
         throw { code: 422, message: "User already existed, Please change your email" }
       }
       let hassPassword = await bcrypt.hash(password, 10)
-      await User.create({
+      let createUser = await User.create({
         name: name,
         email: email,
         password: hassPassword,
         role: "user"
       })
-      return { success: true, message: " User signin successfully" }
+      return { success: true, message: " User signin successfully", data: { name: createUser.name, email: createUser.email } }
 
     } catch (error) {
       return error
@@ -102,10 +102,11 @@ export default {
       if (!comparePassword) {
         throw { code: 400, message: "Password was wrong,please try again" }
       }
-      let token = jwt.sign({ user_id: user._id, username: user.name, email: user.email }, secret, { expiresIn: "7d" });
+      let token = jwt.sign({ user_id: user._id, username: user.name, email: user.email }, process.env.secret, { expiresIn: "7d" });
       return { code: 200, message: "User login successfully", token }
     } catch (error) {
-      throw error
+      console.log(error);
+      throw {code : error.code || 500, message : error.message || "Internal server error"}
     }
   },
 
